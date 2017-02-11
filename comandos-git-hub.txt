@@ -1,0 +1,76 @@
+git init = start git project
+git add "archivo.txt" = adds the file to git
+git add -A = it adds all files
+git commit -m "message" = confirm the files are added to git
+git status = shows the status of git like files that need to be added or commited
+git log = show all the users, time and commit that have been added
+git checkout reference = first use git log and after copy and paste the commit. You can reverse the changes
+git checkout master = this will move you to the master branch
+git checkout algun_branch = this will move you to the algun_branch
+git checkout reference - this will revert you back to that changed
+git log>commits.txt = this will create a file called commits.txt that will contain all the commits that you did.
+git reset --soft reference = similar to checkout but the difference is that you won't be able to reverse to the last commit. this don't touch the code.
+git reset --hard reference = it's DANGEROUS to use this. This will reverse all the changes. This is useful when a commit is damaged and you can not use it. This will delete the code. In fact you need to use another commit in reverse that is good.
+
+git help = it shows the description of some commands. for example you can use it instead of git help status that will show you how to use it
+
+git branch = it shows you the branch that are available and which you are using. branch is the time line. When you can go back to the past.
+
+git checkout branch_name = this will switch the branch for other branches that you want to use. On the branch name put the name that you want
+
+git merge branch_name = it merges one brach to the other branch. ex: git merge Test. this will merge the Test to the master or whatever branch that you have selected. 
+
+git branch -D branch_name = it deletes the branch, Be careful with this command.
+
+
+
+REMOTE
+git remote add origin https://github.com/santiago5020g/alturas.git = connect the local reporsitory to the web reporsitory.
+
+git remote -v = it shows the remote reporsitory
+
+git remote remove origin = it will delete the remote reporsitory.
+
+git push origin master = this will upload all your files into the webpage with the branch called master git hub
+git push origin master -f = this forces to upload the changes from local to the webpage with the branch called master git hub
+
+git pull = Someone else (or you on some other machine) has pushed a changeset to the remote repository. You, on your local machine dont have those changes yet. So to solve the situation you first have to. (I have a doupt with this).
+
+
+git commit --amend -m "Cambio de la url basic.html.twig" = it changes the last commit message
+
+
+
+
+VERSIONS USING TAGS
+git tag -a v0.5 -m = it creates a version on the last commit
+
+git tag -a v0.1 -m "Version 0.1 del proyecto alturas" reference = create a version on a specific commit. Replace reference to the code of the commit.
+
+
+git push origin v0.1 = it upload the version to github
+
+git push origin --tags = it will upload all the tags to github
+
+git show = show what were the last change that the user did. line by line
+
+git archive --format zip --output C:\xampp\htdocs\symfo\v05.zip v0.5 = this will extract the version on a specific root. where it says "v0.5" you can change to a reference commit like 09ab9bca...
+
+
+
+
+WORK IN A TEAM
+
+It work in a team you need to create a new organization. First click on the summ icon and choose "Create a new organization". Fill the required names. Finally add people to your organization. The people will receive your invitation checking in their emails.
+
+steps
+
+git clone http://git.... = first clone the project
+
+git push origin master = this will upload the changes to git hub from the branch master
+
+git fetch origin master= it takes only the changes but does not write the files.
+
+git merge origin/master = it will takes the changes from git hub reporsitory after you write git fetch origin master
+
+
