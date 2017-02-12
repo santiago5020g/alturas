@@ -17,12 +17,16 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+
+
         $builder
         ->add('email', EmailType::class, array('attr' => array('class' => 'form-control'),'label'=>'E-mail'))
         ->add('password', PasswordType::class, array('attr' => array('class' => 'form-control'),'label'=>'Clave'))
         ->add('isActive',CheckboxType::class,array('label'=>'Activo'))
         ->add('roll', EntityType::class, array(
         'attr' => array('class' => 'form-control'),
+        'label'=>'Rol del usuario',
         // query choices from this entity
         'class' => 'AppBundle:Roll',
 

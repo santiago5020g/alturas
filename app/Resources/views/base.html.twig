@@ -72,18 +72,23 @@
                         <li class="active"><a href="{{ path('homepage') }}">Inicio</a></li>
                         <li><a href="#">Acerca de nosotros</a></li>
                         <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Portfolio</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <i class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Listado de clientes</a></li>
-                                    <li><a href="#">Crear cliente</a></li>
+                                    <li><a href="{{ path('usuario_index') }}">Listado de Usuarios</a></li>
+                                    <li><a href="{{ path('usuario_new') }}">Crear usuario</a></li>
                                 </ul>
                             </li>
                         {% endif %}
-                        <li><a href="#">Contactenos</a></li>      
-                        <li><a href="{{ path('login') }}">Iniciar sesion</a></li>                  
+                        <li><a href="#">Contactenos</a></li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('logout') }}">Cerrar sesion</a></li>
+                        {% endif %}
+
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}    
+                        <li><a href="{{ path('login') }}">Iniciar sesion</a></li>    
+                        {% endif %}              
                     </ul>
                 </div>
             </div><!--/.container-->

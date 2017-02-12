@@ -8,7 +8,7 @@
 <div style="margin-top:10%"></div>
 
 <div class="container">
-        <div class="row">
+        <div class="row" id="formulario">
             <div class="col-md-3"></div>
                 <div class="col-md-6">
 
@@ -32,7 +32,7 @@
                     </div>
 
 
-                    <input type="hidden" name="_target_path" value="/customer/" />
+                    <input type="hidden" name="_target_path" value="usuario_index" />
 
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Ingresar</button>
@@ -46,4 +46,11 @@
 
 <div style="margin-top:10%"></div>
 
+{% endblock %}
+
+{% block javascripts %}
+ {{ parent() }}
+ <script>
+    $("#formulario li").attr("class","alert alert-danger")
+ </script>
 {% endblock %}
