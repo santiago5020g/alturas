@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User creation</h1>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input class="btn btn-primary" type="submit" value="Guardar cambios" />
+            {{ form_end(form) }}
+
+            <div class="form-group">
+                 <a class="btn btn-warning" href="{{ path('usuario_index') }}">Regresar atras</a>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
+{% endblock %}
