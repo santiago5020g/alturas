@@ -34,6 +34,10 @@ git remote remove origin = it will delete the remote reporsitory.
 git push origin master = this will upload all your files into the webpage with the branch called master git hub
 git push origin master -f = this forces to upload the changes from local to the webpage with the branch called master git hub
 
+git fetch origin master= it takes only the changes from github  but does not write the files in the local machine.
+
+git merge origin/master = it will takes the changes from git hub reporsitory after you write git fetch origin master
+
 git pull = Someone else (or you on some other machine) has pushed a changeset to the remote repository. You, on your local machine dont have those changes yet. So to solve the situation you first have to. (I have a doupt with this).
 
 
@@ -69,7 +73,7 @@ git clone http://git.... = first clone the project
 
 git push origin master = this will upload the changes to git hub from the branch master
 
-git fetch origin master= it takes only the changes but does not write the files.
+git fetch origin master= it takes only the changes from github  but does not write the files in the local machine.
 
 git merge origin/master = it will takes the changes from git hub reporsitory after you write git fetch origin master
 
