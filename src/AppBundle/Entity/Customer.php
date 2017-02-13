@@ -64,6 +64,10 @@ class Customer
      *
      * @ORM\Column(name="email", type="string", length=100, unique=true)
      * @Assert\NotBlank(message = "El email es requerido")
+     * @Assert\Email(
+     *     message = "El email '{{ value }}' No es un email valido.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
