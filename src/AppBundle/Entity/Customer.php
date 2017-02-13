@@ -11,15 +11,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="customer")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
- * @UniqueEntity(
- *     fields={"cedula", "email", "numeroRegistro"},
- *     errorPath="cedula",
- *     message="Esta cedula ya esta siendo usada por otro usuario",
- *     errorPath="email",
- *     message="Este email ya esta siendo usado por otro usuario",
- *     errorPath="numeroRegistro",
- *     message="Este numero de registro ya esta siendo usado por otro usuario",
- * )
+ * @UniqueEntity("cedula",message="Esta cedula ya existe")
+ * @UniqueEntity("email",message="Este email ya existe")
+ * @UniqueEntity("numeroRegistro",message="Este numero de registro ya existe")
  */
 class Customer
 {
@@ -106,12 +100,12 @@ class Customer
      */
     private $nivel_certificado;
 
-
+    
 
 
     public function __construct()
     {
-        $this->descargarCertificado = 0;
+
         $this->fechaCurso = new \DateTime();
     }
 
@@ -340,4 +334,5 @@ class Customer
     {
         return $this->nivel_certificado;
     }
+
 }

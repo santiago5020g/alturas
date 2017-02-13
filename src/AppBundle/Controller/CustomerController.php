@@ -65,21 +65,7 @@ class CustomerController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a customer entity.
-     *
-     * @Route("/{id}", name="cliente_show")
-     * @Method("GET")
-     */
-    public function showAction(Customer $customer)
-    {
-        $deleteForm = $this->createDeleteForm($customer);
 
-        return $this->render('customer/show.html.twig', array(
-            'customer' => $customer,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing customer entity.
@@ -98,7 +84,7 @@ class CustomerController extends Controller
 
             $this->addFlash(
             'mensaje',
-            'Cliente creado correctamente'
+            'Cliente actualizado correctamente'
             );
 
             return $this->redirectToRoute('cliente_edit', array('id' => $customer->getId()));

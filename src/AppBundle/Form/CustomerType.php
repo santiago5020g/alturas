@@ -30,10 +30,11 @@ class CustomerType extends AbstractType
         ->add('descargarCertificado', ChoiceType::class, array(
             'attr' => array('class' => 'form-control'),
                 'choices'  => array(
-                    'El cliente puede descargar el certificado' => null,
+                    'El cliente puede descargar el certificado' => '',
                     'Si' => 1,
                     'No' => 0,
-                ),
+        ),
+                
             ))
 
             ->add('fecha_curso', DateType::class, array(
