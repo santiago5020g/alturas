@@ -23,6 +23,10 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/ico/apple-touch-icon-114-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
+
+        <!--/#Calendario jquery ui css-->
+        <link href="{{ asset('css/jquery-ui.css')}}" rel="stylesheet">
+
         {% endblock %}
 
     </head>
@@ -80,6 +84,13 @@
                                     <li><a href="{{ path('usuario_new') }}">Crear usuario</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('cliente_index') }}">Listado de clientes</a></li>
+                                    <li><a href="{{ path('cliente_new') }}">Crear cliente</a></li>
+                                </ul>
+                            </li>
                         {% endif %}
                         <li><a href="#">Contactenos</a></li>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -120,6 +131,18 @@
             <script src="{{ asset('js/jquery.isotope.min.js')}}"></script>
             <script src="{{ asset('js/main.js')}}"></script>
             <script src="{{ asset('js/wow.min.js')}}"></script>
+            
+            <!--/#Calendario jquery ui-->
+            <script src="{{ asset('js/jquery-ui.js')}}"></script>
+            <script src="{{ asset('js/datepicker-es.js')}}"></script>
+            <script>
+            $( ".datepicker" ).datepicker({ 
+                dateFormat: 'yy-mm-dd' 
+              });
+              $.datepicker.setDefaults($.datepicker.regional['es']);
+
+              
+            </script>
         {% endblock %}
     </body>
 </html>

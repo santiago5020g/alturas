@@ -38,7 +38,7 @@ git fetch origin master= it takes only the changes from github  but does not wri
 
 git merge origin/master = it will takes the changes from git hub reporsitory after you write git fetch origin master
 
-git pull = Someone else (or you on some other machine) has pushed a changeset to the remote repository. You, on your local machine dont have those changes yet. So to solve the situation you first have to. (I have a doupt with this).
+git pull = Someone else (or you on some other machine) has pushed a changeset to the remote repository. You, on your local machine dont have those changes yet. So to solve the situation you first have to. (I have a doupt with this). DOWNLOAD THE FILES FROM REPORSITORY GITHUB COMBINATION
 
 
 git commit --amend -m "Cambio de la url basic.html.twig" = it changes the last commit message

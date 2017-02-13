@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    
+<div style="margin-bottom:30px"></div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-success" href="{{ path('cliente_new') }}">Crear un nuevo cliente</a>
+        </div>
+    </div>
+
+        {% for flashMessage in app.session.flashbag.get('mensaje') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+    <h1>Lista de clientes</h1>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cedula</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Numeroregistro</th>
+                <th>Fechacurso</th>
+                <th>Descargarcertificado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.nombre }}</td>
+                <td>{{ customer.apellido }}</td>
+                <td>{{ customer.cedula }}</td>
+                <td>{{ customer.celular }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.numeroRegistro }}</td>
+                <td>{{ customer.fechaCurso|date("m/d/Y") }}</td>
+                <td>{% if customer.descargarCertificado %}Si{% else %}No{% endif %}</td>
+                <td>
+                    <a class='btn btn-warning' href="{{ path('cliente_edit', { 'id': customer.id }) }}">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+
+<div style="margin-bottom:20%"></div>
+
+{% endblock %}

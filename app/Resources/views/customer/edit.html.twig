@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customer edit</h1>
+
+
+    <div class="container">
+    <div class="row" id="formulario">
+
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            {% for flashMessage in app.session.flashbag.get('mensaje') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <div class="form-group" style="margin-top:20px">
+                    <input  class="btn btn-warning col-md-12" type="submit" value="Guardar cambios" />
+                </div>
+            {{ form_end(edit_form) }}
+
+            <div class="form-group">
+                 <a class="col-md-12 btn btn-info" href="{{ path('cliente_index') }}">Regresar atras</a>
+            </div>
+
+            <div class="form-group">
+                    {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Esta seguro de borrar el registro?")'}} ) }}
+                        <input class="col-md-12 btn btn-danger" type="submit" value="Borrar">
+                    {{ form_end(delete_form) }}
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
+
+<div style="margin-bottom:13%"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+ {{ parent() }}
+ <script>
+    $("#formulario li").attr("class","alert alert-danger");
+ </script>
+{% endblock %}

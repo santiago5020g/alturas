@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customer creation</h1>
+
+
+<div class="container">
+
+    <div class="row" id="formulario">
+
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Guardar cambios" />
+                </div>
+            {{ form_end(form) }}
+
+            <div class="form-group">
+                 <a class="btn btn-warning" href="{{ path('cliente_index') }}">Regresar atras</a>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
+
+
+<div style="margin-bottom:10%;"></div>
+{% endblock %}
+
+{% block javascripts %}
+ {{ parent() }}
+ <script>
+    $("#formulario li").attr("class","alert alert-danger")
+ </script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nivel_certificados list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nivel_certificado in nivel_certificados %}
+            <tr>
+                <td><a href="{{ path('nivel_certificado_show', { 'id': nivel_certificado.id }) }}">{{ nivel_certificado.id }}</a></td>
+                <td>{{ nivel_certificado.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('nivel_certificado_show', { 'id': nivel_certificado.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('nivel_certificado_edit', { 'id': nivel_certificado.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nivel_certificado_new') }}">Create a new nivel_certificado</a>
+        </li>
+    </ul>
+{% endblock %}
