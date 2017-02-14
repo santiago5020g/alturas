@@ -21,18 +21,49 @@ class CustomerController extends Controller
      * Lists all customer entities.
      *
      * @Route("/", name="cliente_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $customers = $em->getRepository('AppBundle:Customer')->findAll();
+        // $_POST parameters
+        //se capturan los campos del formulario
+        $nombre = $request->request->get('nombre');
+        $cedula = $request->request->get('cedula');
+        $numeroRegistro = $request->request->get('numeroRegistro');
+        $filtro = "";
+        //para llevar estos campos al enviar el formulario
+        $busqueda = array("nombre"=>$nombre,"cedula"=>$cedula,"numeroRegistro"=>$numeroRegistro);
 
-        return $this->render('customer/index.html.twig', array(
-            'customers' => $customers,
-        ));
+        //esta es para la busqueda del formulario
+        if($nombre != "")
+           { $filtro .= "and c.nombre = '$nombre'"; }
+       if($cedula != "")
+           { $filtro .= "and c.cedula = '$cedula'"; }
+       if($numeroRegistro != "")
+           { $filtro .= "and c.numeroRegistro = '$numeroRegistro'"; }
+
+
+        //empezar la consulta
+        $em    = $this->get('doctrine.orm.entity_manager');
+        //1=1 $filtro es la logica para poder implementar filtros en la consulta
+        $customer   = "SELECT c FROM AppBundle:Customer c WHERE 1=1 $filtro";
+        $query = $em->createQuery($customer);
+        //el paginador
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
+
+
+        return $this->render('customer/index.html.twig', array('pagination' => $pagination,'busqueda'=>$busqueda));
     }
+
+
+
+
 
     /**
      * Creates a new customer entity.

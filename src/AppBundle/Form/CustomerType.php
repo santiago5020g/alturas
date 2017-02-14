@@ -24,7 +24,7 @@ class CustomerType extends AbstractType
         ->add('nombre', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'Nombre'))
         ->add('apellido', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'Apellido'))
         ->add('cedula', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'Cedula'))
-        ->add('celular', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'Celular'))
+        ->add('celular', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'Celular','required'    => false,))
         ->add('email', EmailType::class, array('attr' => array('class' => 'form-control'),'label'=>'E-mail'))
         ->add('numeroRegistro', TextType::class, array('attr' => array('class' => 'form-control'),'label'=>'NumeroRegistro'))
         ->add('descargarCertificado', ChoiceType::class, array(

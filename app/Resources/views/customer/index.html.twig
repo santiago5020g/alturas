@@ -12,19 +12,59 @@
         </div>
     </div>
 
+    <div class="row" style="margin-top:15px">
+        Total registros: {{ pagination.getTotalItemCount }} 
+    </div>
+
         {% for flashMessage in app.session.flashbag.get('mensaje') %}
             <div class="alert alert-success">
                 {{ flashMessage }}
             </div>
         {% endfor %}
 
+        
+    <div class="row" style="margin-top:15px">
+
+        <form id="formu" action="{{ path('cliente_index') }}" method="post">
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label for="">Nombre</label>
+                    <input type="text" value="{{ busqueda['nombre'] }}" class="form-control" name="nombre" id="nombre" placeholder="nombre">
+                </div>
+                <div class="col-md-4">
+                    <label for="">Cedula</label>
+                    <input type="text" value="{{ busqueda['cedula'] }}" class="form-control" name="cedula" id="cedula" placeholder="Cedula">
+                </div>
+                <div class="col-md-4">
+                    <label for="">Numero de registro</label>
+                    <input type="text" value="{{ busqueda['numeroRegistro'] }}" class="form-control" name="numeroRegistro" id="numeroRegistro" placeholder="Numero de registro">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12" style="margin-top:15px">
+                    <input type="submit" class="btn btn-info btn-lg" value="Buscar">
+                </div>
+                <div class="col-md-12" style="margin-top:15px">
+                    <input type="reset" class="btn btn-primary btn-lg" value="Limpiar" onclick ="">
+                </div>
+            </div>  
+        </form>
+
+    </div>
+
+    
+
+    {% if pagination.getTotalItemCount > 0 %}
+
     <h1>Lista de clientes</h1>
 
-    <div class="table-responsive">
+    <div class="table-responsive" id="mensaje">
         <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th>Nombre</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'c.nombre') }}</th>
                 <th>Apellido</th>
                 <th>Cedula</th>
                 <th>Celular</th>
@@ -36,7 +76,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for customer in customers %}
+        {% for customer in pagination %}
             <tr>
                 <td>{{ customer.nombre }}</td>
                 <td>{{ customer.apellido }}</td>
@@ -55,9 +95,28 @@
     </table>
 </div>
 
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+
+
+{% endif %}
+
+
+{% if pagination.getTotalItemCount == 0 %}
+    <h2>No se encontraron registros</h2>
+{% endif %}
+
+
+
 </div>
 
 
 <div style="margin-bottom:20%"></div>
 
 {% endblock %}
+
+
+
